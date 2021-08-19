@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Window X Y Click</title>
+    <style>
+        .tag {
+            background-color: black;
+        }
+
+        .box {
+            background-color: bisque;
+            border-radius: 4px;
+            margin-top: 20px;
+            width: 100px;
+            height: 100px;
+        }
+
+        .specialBox {
+            background-color: red;
+            border-radius: 4px;
+            margin-top: 20px;
+            width: 100px;
+            height: 100px;
+        }
+
+        aside {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="tag">
+        <aside class="buttons">
+            <button class="scroll-by">Scroll by 100px(y)</button>
+            <button class="scroll-to">Scroll to 100px(y)</button>
+            <button class="scroll-into">Scroll into Special Box</button>
+        </aside>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="specialBox"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+    </div>
+    <script>
+        const specialBox = document.querySelector('.specialBox')
+        specialBox.addEventListener('click', (event) => {
+            const rect = specialBox.getBoundingClientRect()
+            console.log(rect)
+            console.log(`client: ${event.clientX}, ${event.clientY}`)
+            console.log(`page: ${event.pageX}, ${event.pageY}`)
+        })
+
+        const scrollBy = document.querySelector('.scroll-by')
+        const scrollTo = document.querySelector('.scroll-to')
+        const scrollInto = document.querySelector('.scroll-into')
+        scrollBy.addEventListener('click', () => {
+            window.scrollBy(0, 100)
+        })
+        scrollTo.addEventListener('click', () => {
+            window.scrollTo(0, 100)
+        })
+        scrollInto.addEventListener('click', () => {
+            specialBox.scrollIntoView()
+        })
+    </script>
+</body>
+
+</html>
