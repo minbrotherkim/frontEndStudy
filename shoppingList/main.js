@@ -1,6 +1,12 @@
 const input = document.querySelector(".footer_input");
 const addBtn = document.querySelector(".footer_button");
 const items = document.querySelector(".items");
+const form = document.querySelector(".new-form")
+
+form.addEventListener('submit', event => {
+  event.preventDefault()
+  addItem()
+})
 
 function addItem() {
   const text = input.value;
@@ -42,15 +48,18 @@ function createItem(text) {
   return itemRow;
 }
 
-addBtn.addEventListener("click", () => {
-  addItem();
-});
+// addBtn.addEventListener("click", () => {
+//   addItem();
+// });
 
-input.addEventListener("keypress", (event) => {
-  if (event.key === "Enter") {
-    addItem();
-  }
-});
+// input.addEventListener("keyup", (event) => {
+//   if (event.isComposing) {
+//     return
+//   }
+//   if (event.key === "Enter") {
+//     addItem();
+//   }
+// });
 
 items.addEventListener('click', event => {
     const id = event.target.dataset.id
